@@ -28,6 +28,10 @@ public class StudentEntity {
     @Column(nullable = false)
     private int isActive;
 
+    @ManyToOne
+    @JoinColumn
+    private ClassEntity classEntity;
+
     @CreatedDate
     @Column(nullable = false, updatable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private LocalDateTime createdAt;
