@@ -2,13 +2,22 @@ package riwi.workshop.number_three.entities;
 
 
 import jakarta.persistence.*;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name = "Lesson")
+@EntityListeners(AuditingEntityListener.class)
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class LessonEntity {
 
     @Id
@@ -21,11 +30,14 @@ public class LessonEntity {
     @Column(nullable = false)
     private boolean isActive;
 
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    private ClassEntity classEntity;
+
     @CreatedDate
     @Column(nullable = false, updatable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private LocalDateTime createdAt;
 
-    @OneToMany(mappedBy = "lesson", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ContentMediaEntity> contentMediaList = new ArrayList<>();
+
 
 }

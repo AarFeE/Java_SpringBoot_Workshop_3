@@ -1,11 +1,18 @@
 package riwi.workshop.number_three.entities;
 
 import jakarta.persistence.*;
+import lombok.*;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import riwi.workshop.number_three.services.utils.enums.MediaType;
 
 @Entity
 @Table(name = "content_media")
-
+@EntityListeners(AuditingEntityListener.class)
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class ContentMediaEntity {
 
     @Id

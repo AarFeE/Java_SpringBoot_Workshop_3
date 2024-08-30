@@ -29,7 +29,7 @@ public class StudentEntity {
     private int isActive;
 
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(nullable = false)
     private ClassEntity classEntity;
 
     @CreatedDate
