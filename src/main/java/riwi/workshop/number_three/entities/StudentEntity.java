@@ -26,7 +26,7 @@ public class StudentEntity {
     private String name;
 
     @Column(nullable = false)
-    private int isActive;
+    private boolean isActive;
 
     @ManyToOne
     @JoinColumn(nullable = false)
